@@ -1,0 +1,5 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        a=x**n
+        b= ("{0:.5f}".format(a))
+        return float(b)
