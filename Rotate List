@@ -1,0 +1,19 @@
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        while head==None or k==0:
+            return head
+        length=1
+        temp=head
+        while temp.next!=None:
+            length=length+1
+            temp=temp.next
+        temp.next=head
+        k=k%length
+        temp1=head
+        for i in range(length-k-1):
+            temp1=temp1.next
+        new_node=temp1.next
+        temp1.next=None
+        return new_node
+
+    
