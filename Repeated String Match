@@ -1,12 +1,6 @@
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
-        ans=""
-        strs=sorted(strs)
-        first=strs[0]
-        last=strs[-1]
-        for i in range(min(len(first),len(last))):
-            if first[i]!=last[i]:
-                return ans
-            else:
-                ans=ans+first[i]
-        return ans
+    def repeatedStringMatch(self, a: str, b: str) -> int:
+        for i in range((len(b)//len(a))+3):
+            if b in a*i:
+                return i
+        return -1
