@@ -1,0 +1,14 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        ans=[]
+        n=len(candidates)
+        def solve(index,sum,lst):
+            if index>=n:
+                if sum==target:
+                    ans.append(lst)
+                return
+            solve(index+1,sum,lst)
+            if sum+candidates[index]<=target:
+                solve(index,sum+candidates[index],lst+[candidates[index]])
+        solve(0,0,[])
+        return ans
