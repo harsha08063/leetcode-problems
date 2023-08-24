@@ -1,0 +1,15 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        l=[]
+        nums.sort()
+        def subsets(index,elements):
+            if index==len(nums):
+                l.append(elements) if elements not in l else None
+                return 
+
+            subsets(index+1,elements)
+            subsets(index+1,elements+[nums[index]])
+        subsets(0, [])
+        return l
+
+        
