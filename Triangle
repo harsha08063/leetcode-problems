@@ -1,0 +1,12 @@
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        dp=[[-1 for i in range(len(triangle))]for j in range(len(triangle))]
+        def solve(i,j):
+            if i==len(triangle)-1:
+                return triangle[i][j]
+            if dp[i][j]!=-1:
+                return dp[i][j]
+            down=triangle[i][j]+solve(i+1,j)
+            diagnal=triangle[i][j]+solve(i+1,j+1)
+            dp[i][j]=min(down,diagnal)
+            return dp[i][j]
+        return solve(0,0)
