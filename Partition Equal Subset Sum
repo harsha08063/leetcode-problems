@@ -1,0 +1,24 @@
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        s = sum(nums)
+        n = len(nums)
+        if s % 2 != 0:
+            return False
+
+        dp = [[-1 for i in range(s // 2 + 1)] for j in range(n + 1)]
+
+        def solve(i, target):
+            if target == 0:
+                return True
+            if i == n:
+                return False
+            if dp[i][target] != -1:
+                return dp[i][target]
+            not_take = solve(i + 1, target)
+            take = False
+            if target >= nums[i]:
+                take = solve(i + 1, target - nums[i])
+            dp[i][target] = take or not_take
+            return dp[i][target]
+
+        return solve(0, s // 2)
