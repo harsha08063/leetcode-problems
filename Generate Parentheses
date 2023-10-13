@@ -1,0 +1,11 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        def solve(p,left,right,l=[]):
+            if left:
+                solve(p+"(",left-1,right)
+            if right>left:
+                solve(p+")",left,right-1)
+            if not right:
+                l.append(p)
+            return l
+        return solve("",n,n)
